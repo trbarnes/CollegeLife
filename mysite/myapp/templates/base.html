@@ -12,6 +12,15 @@
     {% endblock %}
   </head>
   <body>
+    {% block content %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/vendor/what-input.js" %}"></script>
+    <script src="{% static "js/vendor/foundation.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
+    {% block scripts %}
+    {% endblock %}
     <div class="large-4 medium-4 cell">
       <h5>{{ body }}</h5>
       <p>Dang these buttons are really cool!</p>
