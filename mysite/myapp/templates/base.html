@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ title }}</title>
+    <link rel="stylesheet" href="{% static "css/foundation.css" %}">
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="large-4 medium-4 cell">
+      <h5>{{ body }}</h5>
+      <p>Dang these buttons are really cool!</p>
+      <p><a href="#" class="button">Simple Button</a><br/>
+      <a href="#" class="success button">Success Btn</a><br/>
+      <a href="#" class="alert button">Alert Btn</a><br/>
+      <a href="#" class="secondary button">Secondary Btn</a></p>
+      <div class="callout">
+        <h5>Look at how good my assignment 3 is!</h5>
+        <p>This is where I found my CSS styling code:</p>
+        <a href="http://foundation.zurb.com/sites/docs/" class="small button">Go to Foundation Docs</a>
+      </div>
+    </div>
+  </body>
+</html>

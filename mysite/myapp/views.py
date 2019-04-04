@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+#from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("CINS465 Hello World")
+    context = {
+        "body":"CINS465 Hello World",
+        "title":"Hello",
+    }
+    return render(request,"base.html", context=context)
