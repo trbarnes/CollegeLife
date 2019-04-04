@@ -3,15 +3,14 @@
 
 
 {% block content %}
-{{ body }}
-<div id="app-4">
-  <span v>
-    <ul>
-    {% for item in item_list %}
-        <li>{{ item }}</li>
-    {% endfor %}
-    </ul>
-  </span>
+<div id="app">
+  <ol>
+    <li v-for="todo in suggestions">
+      {% verbatim %}
+      {{ todo.suggestion }}
+      {% endverbatim %}
+      </li>
+  </ol>
 </div>
 
 <form action="/" method="post">
@@ -19,6 +18,11 @@
 {{ form.suggestion_field.label }}
 {{ form.suggestion_field }}
 {{ form.suggestion_field.errors }}
-<input type="submit" class="button" value="Add Suggestion">
+<input type="submit" class="button" value="Add Suggestion (javascript page updater enabled)">
 </form>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{% static "js/myvue.js" %}"></script>
 {% endblock %}
