@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 #from django.http import HttpResponse
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 from . import models
 from . import forms
 
+
+@login_required(redirect_field_name='/', login_url="/login/")
 def index(request):
     #Form Submission
     if request.method == "POST":
@@ -22,13 +26,15 @@ def index(request):
         print("GET")
     i_list = models.Suggestion.objects.all()
     context = {
-        "body":"CINS465 Hello World",
-        "title":"Hello",
+        "body":"College Life",
+        "title":"CollegeLife",
         "item_list":i_list,
         "form":form_instance,
     }
     return render(request,"page.html", context=context)
 
+
+@login_required(redirect_field_name='/', login_url="/login/")
 def suggestions_json(request):
     i_list = models.Suggestion.objects.all()
     resp_list = {}
@@ -36,3 +42,20 @@ def suggestions_json(request):
     for item in i_list:
         resp_list["suggestions"] += [{"suggestion":item.suggestion_field}]
     return JsonResponse(resp_list)
+
+def logout_view(request):
+    logout(request)
+    return redirect("/login/")
+
+def register(request):
+    if request.method == "POST":
+        form_instance = forms.RegistrationForm(request.POST)
+        if form_instance.is_valid():
+            form_instance.save()
+            return redirect("/login/")
+    else:
+        form_instance = forms.RegistrationForm()
+    context = {
+        "form":form_instance,
+    }
+    return render(request, "registration/register.html", context=context)

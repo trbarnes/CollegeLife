@@ -1,2 +1,5 @@
-Django==2.1.5
-pytz==2018.9
+Django==2.1.7
+docker==2.5.1
+pylint==2.2.2
+pylint_django==2.0.5
+coverage==4.5.2
