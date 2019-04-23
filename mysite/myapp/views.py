@@ -59,3 +59,14 @@ def register(request):
         "form":form_instance,
     }
     return render(request, "registration/register.html", context=context)
+
+#https://blog.heroku.com/in_deep_with_django_channels_the_future_of_real_time_apps_in_django
+@login_required(redirect_field_name='/', login_url="/login/")
+def chat_room(request, label):
+    room, created = Room.objects.get_or_create(label=label)
+    messages = reversed(room.messages.order_by('-timestamp')[:50])
+
+    return redner(request, "chat/room.html", {
+        'room': room,
+        'messages': messages,
+    })

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "chat.routing.channel_routing",
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
