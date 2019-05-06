@@ -1,19 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr">
+
+
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    	<meta charset="utf-8">
+    	<link rel="stylesheet" href="{%static "app.css"%}">
+
+      <div class="sidenav">
+        <a href="/">home</a>
+        <a href="/signup/">register</a>
+        <a href="/ncl/">ncl</a>
+        <a href="./">test</a>
+        <a href="/about/">about</a>
+      </div>
+
+
     <title> {{ title }}</title>
     <link rel="stylesheet" href="{% static "css/foundation.css" %}">
     <link rel="stylesheet" href="{% static "css/app.css" %}">
+
+    {% if user.is_authenticated %}
+    <b class="above_logout">
+                    Hello {{user.username}}
+    </b>
+    <form>
+    <input type="button" class="logout" value="Logout" onclick="window.location.href='/logout/'" />
+    </form>
+                {% else %}
+    <b class="above_logout">
+                    Hello Stranger
+    </b>
+    <form>
+    <input type="button" class="logout" value="Login" onclick="window.location.href='/login/'" />
+    </form>
+                {% endif %}
+
     {% block css %}
     {% endblock %}
   </head>
   <body>
     {% block content %}
     {% endblock %}
+
+    <!doctype html>
+    <html>
+    	<head>
+    		{%block head%}
+    		{%endblock%}
+    	</head>
+
+    <!--https://stackoverflow.com/questions/9416514/django-logout-button-->
+    <!--http://www.hyperlinkcode.com/button-links.php-->
+
+
+
+
+
+
+    <!--used this as an idea for the base.html having a login/out button
+    https://stackoverflow.com/questions/17032174/having-trouble-with-user-is-authenticated-in-django-template>
+    -->
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
     <script src="{% static "js/vendor/what-input.js" %}"></script>
@@ -23,6 +79,7 @@
     {% endblock %}
     <div class="large-4 medium-4 cell">
       <h5>{{ body }}</h5>
+
       <!-- <p>Dang these buttons are really cool!</p>
       <p><a href="#" class="button">Simple Button</a><br/>
       <a href="#" class="success button">Success Btn</a><br/>
