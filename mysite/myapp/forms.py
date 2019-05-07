@@ -3,7 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class SuggestionForm(forms.Form):
-    suggestion_field = forms.CharField(label='Suggestion', max_length=240)
+    suggestion_field = forms.CharField(label='New Post', max_length=1000)
+
+class CommentForm(forms.Form):
+    comment_field = forms.CharField(label='Comment', max_length=240)
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(

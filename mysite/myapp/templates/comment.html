@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Comment{% endblock %}
+{% block content %}
+<div class="grid-x grid-padding-x">
+  <!-- <div class="large-4 medium-4 small-12 cell"></div> -->
+  <div class="large-4 medium-4 small-12 large-offset-4 medium-offset-4 cell">
+
+    <form action="/comment/{{ suggestion }}/" method="post">
+        {% csrf_token %}
+        <h4 class="text-center">Comments</h4>
+        {{ form }}
+        <input type="submit" class="button expanded" value="Add Comment" />
+        <a href="/"><input type="button" class="button expanded" value="Return to Posts" /></a>
+    </form>
+  </div>
+</div
+<div id="app-4">
+  <span v-if="seen">
+    <ul>
+    {% for item in item_list %}
+        <li>{{ item.comment_field }} - {{ item.comment_author.username }} - {{ item.created_on }}</li>
+    {% endfor %}
+    </ul>
+  </span>
+  <span v-if="unseen">
+</div>
+{% endblock %}

@@ -3,23 +3,28 @@
 
 
 {% block content %}
-<div id="app">
-  <ol>
-    <li v-for="todo in suggestions">
-      {% verbatim %}
-      {{ todo.suggestion }}
-      {% endverbatim %}
-      </li>
-  </ol>
-</div>
-
+{% if user.is_authenticated %}
 <form action="/" method="post">
 {% csrf_token %}
 {{ form.suggestion_field.label }}
 {{ form.suggestion_field }}
 {{ form.suggestion_field.errors }}
-<input type="submit" class="button" value="Add Suggestion (javascript page updater enabled)">
+<input type="submit" class="button" value="Create Post">
 </form>
+{% endif %}
+<div id="app-4">
+  <span v-if="seen">
+    <ul>
+    {% for item in item_list %}
+        <li>{{ item.suggestion_field }} - {{ item.suggestion_author.username }} - {{ item.created_on }} - <a href="comment/{{ item.id }}/">comment</a></li>
+    {% endfor %}
+    </ul>
+  </span>
+  <span v-if="unseen">
+</div>
+  </span>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
