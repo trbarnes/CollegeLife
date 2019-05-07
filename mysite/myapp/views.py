@@ -103,7 +103,7 @@ def comment_view(request, sugg):
             new_comm.comment_suggestion = sugg_instance
             new_comm.comment_author = request.user
             new_comm.save()
-            return redirect("/")
+            # return redirect("/")
     else:
         form_instance = forms.CommentForm()
     if request.method == "GET":
