@@ -8,6 +8,39 @@
     <title> {{ title }}</title>
     <link rel="stylesheet" href="{% static "css/foundation.css" %}">
     <link rel="stylesheet" href="{% static "css/app.css" %}">
+
+
+
+<!--
+Adapted from  https://foundation.zurb.com/sites/docs/v/5.5.3/components/topbar.html
+https://foundation.zurb.com/building-blocks/blocks/topbar-center-logo.html
+-->
+
+<div class="top-bar topbar-center-logo" id="topbar-center-logo">
+  <div class= "top-bar-left">
+    <ul class="menu vertical medium-horizontal">
+      <li>College Life</li>
+    </ul>
+  </div>
+
+  <div class= "top-bar-center">
+    <ul class="menu vertical medium-horizontal">
+      <input type="text" placeholder="Search for Something!">
+    </input>
+      <a href="#" class="button">Search</a>
+    </ul>
+  </div>
+
+    <div class= "top-bar-center">
+    <ul class="menu vertical medium-horizontal">
+      <li>one</li>
+      <li>one</li>
+      <li>one</li>
+    </ul>
+  </div>
+</div>
+
+
     {% block css %}
     {% endblock %}
   </head>
