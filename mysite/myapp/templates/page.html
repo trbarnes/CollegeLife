@@ -2,6 +2,22 @@
 {% include "base.html" %}
 
 
+<style>
+.collapse {
+	background-color: #990;
+}
+
+
+.pannel{
+display: none;
+}
+
+.active, .collapse:hover {
+	background-color: #155;
+}
+
+</style>
+
 {% block content %}
 {% if user.is_authenticated %}
 <form action="/" method="post">
@@ -18,7 +34,7 @@
   <span v-if="seen">
     <ul>
     {% for item in item_list %}
-        <li>{{ item.suggestion_field }} - {{ item.suggestion_author.username }} - {{ item.created_on }} - <a href="comment/{{ item.id }}/">comment</a></li>
+    <li>{{ item.suggestion_field }} - {{ item.suggestion_author.username }} - {{ item.created_on }} -<button class="collapse" onclick="please()">show more</button><div class="pannel">hidden text</div>-<a href="comment/{{ item.id }}/">comment</a></li>
     {% endfor %}
     </ul>
   </span>
@@ -32,4 +48,27 @@
 {% block scripts %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="{% static "js/myvue.js" %}"></script>
+
+
+<script>
+	function please(){
+	var comments=document.getElementsByClassName("collapse");
+	vari i;
+	for(i=0;i<col.length;i++){
+		comments[i].addEventListener("click",function(){
+			this.classList.toggle("active");
+			var content=this.nextElementSibling;
+			if(content.style.display=="block"){
+				content.style.display=="none"
+			}else {
+				content.style.display=="block"
+			}
+		});
+	}
+	}
+
+
+
+</script>
+
 {% endblock %}
