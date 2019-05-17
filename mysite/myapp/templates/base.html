@@ -27,15 +27,27 @@ https://foundation.zurb.com/building-blocks/blocks/topbar-center-logo.html
     <ul class="menu vertical medium-horizontal">
       <input type="text" placeholder="Search for Something!">
     </input>
-      <a href="#" class="button">Search</a>
+      <a href="#" onClick="alert('not yet implemented')" class="button">Search</a>
     </ul>
   </div>
 
     <div class= "top-bar-center">
     <ul class="menu vertical medium-horizontal">
-      <li>one</li>
-      <li>one</li>
-      <li>one</li>
+	    {% if user.is_authenticated %}
+		<b class="above_logout">
+                Hello {{user.username}}
+		</b>
+		<form>
+			<input type="button" class="logout" value="Logout" onclick="window.location.href='/logout/'" />
+		</form>
+            {% else %}
+		<b class="above_logout">
+                	Hello Stranger
+		</b>
+		<form>
+			<input type="button" class="logout" value="Login" onclick="window.location.href='/login/'" />
+		</form>
+            {% endif %}
     </ul>
   </div>
 </div>

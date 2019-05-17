@@ -26,14 +26,14 @@ SECRET_KEY = '0)41dreu5md8db0x6^74x3k9m)2rrm6fv-x&fljop1##+n9o+&'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        '0.0.0.0',
-        '35.212.159.104',
+        '35.212.159.104'
         ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'chat',
-    'channels',
 ]
 
 MIDDLEWARE = [
